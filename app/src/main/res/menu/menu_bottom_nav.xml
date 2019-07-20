@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeButton"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home"/>
+
+    <item
+            android:id="@+id/settingsButton"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="Settings"/>
+
+    <item
+            android:id="@+id/blank"
+            android:icon="@drawable/test_nav_drawer_icon"
+            android:title="blank"/>
+
+    <item
+            android:id="@+id/newTask"
+            android:icon="@drawable/ic_add_white_35dp"
+            android:title="New Task"/>
+
+</menu>
