@@ -5,13 +5,8 @@ import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.app.DatePickerDialog
-import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
-import android.util.Log
-import android.widget.DatePicker
 import androidx.core.view.isVisible
-import androidx.fragment.app.DialogFragment
 
 import kotlinx.android.synthetic.main.activity_create_task.*
 import kotlinx.android.synthetic.main.content_create_task.*
@@ -65,13 +60,13 @@ class createTask : AppCompatActivity() {
 
             else if (edit) {
                 listStor[extraValue] = Task(title, desc, due)
-                val intent = Intent(this, listPage::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
 
             else {
                 listStor.add(Task(title, desc, due))
-                val intent = Intent(this, listPage::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
         }
