@@ -4,10 +4,7 @@ import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.os.SystemClock
-import androidx.core.app.NotificationBuilderWithBuilderAccessor
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 
 fun Notification(
     context: Context,
