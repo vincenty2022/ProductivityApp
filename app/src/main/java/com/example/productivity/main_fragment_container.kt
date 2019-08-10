@@ -6,12 +6,12 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.PopupWindow
-import android.widget.TextView
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.home_fragment.view.*
 import kotlinx.android.synthetic.main.main_popup.view.*
@@ -19,8 +19,7 @@ import kotlinx.android.synthetic.main.main_popup.view.*
 // test progressbar fragment
 class progressBarFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.progressbar_fragment, container, false)
-        return view
+        return inflater.inflate(R.layout.progressbar_fragment, container, false)
     }
 }
 
@@ -85,5 +84,19 @@ class homeFragment: Fragment(), onTaskListener {
         main_recView.adapter = mainAdapter(this)
         if (listStor.isEmpty()) main_emptyInside.visibility = View.VISIBLE
         else main_emptyInside.visibility = View.GONE
+    }
+}
+
+class settingsFragment: Fragment() {
+    var fragmentActivity = getActivity()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.settings_fragment, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        fragmentActivity = getActivity()
+
+
     }
 }

@@ -5,14 +5,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.acitivty_main.*
+import kotlinx.android.synthetic.main.activty_main.*
 
 class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.acitivty_main)
+        setContentView(R.layout.activty_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         getSupportActionBar()!!.setTitle("My Tasks")
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.settingsButton -> {
-                    // settings fragment
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, settingsFragment()).commit()
                     true
                 }
                 R.id.blank -> {
