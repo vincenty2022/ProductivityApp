@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.settingsButton -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment_container, settingsFragment()).commit()
+                    val intent = Intent(this, SettingsActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.blank -> {
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         bottom_nav.setOnNavigationItemSelectedListener(listener)
+        bottom_nav.selectedItemId = R.id.homeButton
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, homeFragment()).commit()
@@ -73,6 +75,11 @@ class MainActivity : AppCompatActivity() {
             "Rar",
             1
         )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bottom_nav.selectedItemId = R.id.homeButton
     }
 
     override fun onBackPressed() {

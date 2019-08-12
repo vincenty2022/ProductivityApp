@@ -86,17 +86,3 @@ class homeFragment: Fragment(), onTaskListener {
         else main_emptyInside.visibility = View.GONE
     }
 }
-
-class settingsFragment: Fragment() {
-    var fragmentActivity = getActivity()
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.settings_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        fragmentActivity = getActivity()
-
-
-    }
-}
