@@ -6,15 +6,14 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.PopupWindow
-import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.home_fragment.view.*
 import kotlinx.android.synthetic.main.main_popup.view.*
+import java.util.*
 
 // test progressbar fragment
 class progressBarFragment: Fragment() {
@@ -50,9 +49,21 @@ class homeFragment: Fragment(), onTaskListener {
             dimOverlay.visibility = View.GONE
             popup.dismiss()
         }
-        view.title.setText(listStor[position].getTitle())
-        view.descript.setText(listStor[position].getDesc())
-        // figure out how you want to implement the date
+        val currTask = listStor[position]
+
+        view.title.setText(currTask.getTitle())
+        view.descript.setText(currTask.getDesc())
+
+        if (currTask.checkOngoing()){
+            view.dueDate.setText("Ongoing")
+        }
+        else {
+            val currCal = currTask.getCal()
+            val currYear = currCal.get(Calendar.YEAR)
+            val currMonth = currCal.get(Calendar.MONTH)
+            val currDay = currCal.get(Calendar.DAY_OF_MONTH)
+            view.dueDate.setText(dateFormatLetters(dateFormat, currYear, currMonth, currDay))
+        }
 
         // Delete Button
         view.del_but.setOnClickListener{

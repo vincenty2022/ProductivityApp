@@ -6,6 +6,8 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.opengl.Visibility
+import android.view.View
 import androidx.core.view.isVisible
 
 import kotlinx.android.synthetic.main.activity_create_task.*
@@ -58,12 +60,14 @@ class createTask : AppCompatActivity() {
                 dueWarn.show()
             }
 
+            // configure for edit task
             else if (edit) {
                 listStor[extraValue] = Task(title, desc, due)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
 
+            // normal configuration
             else {
                 listStor.add(Task(title, desc, due))
                 val intent = Intent(this, MainActivity::class.java)
@@ -101,6 +105,7 @@ class createTask : AppCompatActivity() {
             month = c.get(Calendar.MONTH)
             day = c.get(Calendar.DAY_OF_MONTH)
         }
+
         else {
             year = tempDateArr[0]
             month = tempDateArr[1]
@@ -120,11 +125,20 @@ class createTask : AppCompatActivity() {
         getSupportActionBar()!!.setTitle("Edit Task")
         val title = task.getTitle()
         val description = task.getDesc()
-        val date = task.getDue()
+        val date = task.getDueArr()
 
         // set default
         Title.setText(title)
         Description.setText(description)
-        tempDateArr = date
+        if (task.checkOngoing()){
+            tempDateArr = arrayOf()
+            onGoingCheck.isChecked = true
+            calendarButton.isVisible = false
+            Date.setText("Ongoing")
+        }
+        else {
+            tempDateArr = date
+            Date.setText(dateFormatLetters(dateFormat, tempDateArr[0], tempDateArr[1], tempDateArr[2]))
+        }
     }
 }
