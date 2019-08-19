@@ -1,3 +1,3 @@
 package com.example.productivity
 
-var dateForm = 0
+var dateFormat = 0

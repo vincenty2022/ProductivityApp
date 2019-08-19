@@ -28,5 +28,16 @@
 
     <!--Settings Menu-->
     <string name="settings_dateForm">Date Format</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Categories -->
+    <string name="settings_notifications_header">Notifications</string>
+    <string name="settings_notifications_onoff">Daily Check-Ins</string>
+
+    <string name="settings_system_header">System</string>
+    <string name="setttings_dateform_title">Date Format</string>
+
+    <string name="settings_on">On</string>
+    <string name="settings_off">Off</string>
 
 </resources>
