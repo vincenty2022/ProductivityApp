@@ -5,9 +5,9 @@
     <PreferenceCategory
             app:title="Worked!">
 
-        <Preference
-                app:key="working_test"
-                app:title="Worked!"/>
+        <SwitchPreferenceCompat
+            app:key ="inPref"
+            app:title="Test"/>
 
     </PreferenceCategory>
 

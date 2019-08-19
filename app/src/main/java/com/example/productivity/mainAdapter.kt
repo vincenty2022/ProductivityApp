@@ -22,7 +22,7 @@ class mainAdapter(listener: onTaskListener): RecyclerView.Adapter<customViewHold
     override fun onBindViewHolder(holder: customViewHolder, position: Int) {
         val tempTitle = listStor[position].getTitle()
         val tempDue = listStor[position].getDue()
-        val dueFormat = if(tempDue[0] != -1) "Due: ${dateFormatNumbers(dateForm, tempDue[0], tempDue[1], tempDue[2])}"
+        val dueFormat = if(tempDue[0] != -1) "Due: ${dateFormatNumbers(dateFormat, tempDue[0], tempDue[1], tempDue[2])}"
             else "Ongoing"
 
         holder.view.title.setText(tempTitle)

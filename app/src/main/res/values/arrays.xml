@@ -7,8 +7,8 @@
     </string-array>
 
     <string-array name="dateform_values">
-        <item>dateform_opt_one</item>
-        <item>dateform_opt_two</item>
-        <item>dateform_opt_three</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
     </string-array>
 </resources>

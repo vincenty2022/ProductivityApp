@@ -109,7 +109,7 @@ class createTask : AppCompatActivity() {
 
         val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener {_, myear, mmonth, mday ->
             tempDateArr = arrayOf(myear, mmonth, mday)
-            Date.setText(dateFormatLetters(dateForm, myear, mmonth, mday))
+            Date.setText(dateFormatLetters(dateFormat, myear, mmonth, mday))
         }, year, month, day)
         dpd.show()
     }

@@ -25,7 +25,7 @@
                 app:title="@string/setttings_dateform_title"
                 app:entries="@array/dateform_entries"
                 app:entryValues="@array/dateform_values"
-                app:defaultValue="dateform_option_one"
+                app:defaultValue="0"
                 app:useSimpleSummaryProvider="true"/>
 
     </PreferenceCategory>
@@ -47,7 +47,7 @@
                 app:dependency="notif_onoff"/>
 
         <Preference
-                app:key="test"
+                app:key="toTestActivity"
                 app:title="test"
                 app:fragment="com.example.productivity.testFragment"/>
 
