@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.taskview.view.*
+import kotlin.math.abs
 
 class mainAdapter(listener: onTaskListener): RecyclerView.Adapter<customViewHolder>() {
     private val taskListener = listener
@@ -20,13 +21,34 @@ class mainAdapter(listener: onTaskListener): RecyclerView.Adapter<customViewHold
     }
 
     override fun onBindViewHolder(holder: customViewHolder, position: Int) {
-        val tempTitle = listStor[position].getTitle()
-        val tempDue = listStor[position].getDue()
-        val dueFormat = if(tempDue[0] != -1) "Due: ${dateFormatNumbers(dateFormat, tempDue[0], tempDue[1], tempDue[2])}"
-            else "Ongoing"
+        val tempTask = listStor[position]
+        val tempTitle = tempTask.getTitle()
+        val tempDue = tempTask.getDueArr()
+        val until = tempTask.until()
+        val dueText: String
+
+        // ongoing task?
+        if(tempTask.checkOngoing()){
+            dueText = "Ongoing"
+        }
+        // due within week, today, or past due
+        else if (until < 7){
+            dueText = when{
+                until == 0 -> "Due: Today"
+                until ==1 -> "Due: Tomorrow"
+                until < 0 -> "Due: ${abs(until)} Days Ago"
+                else -> "Due: $until Days"
+            }
+        }
+        else {
+            dueText = "Due: ${dateFormatNumbers(dateFormat, tempDue[0], tempDue[1], tempDue[2])}"
+        }
+
+//        val dueText = if(!tempisOngoing) "Due: ${dateFormatNumbers(dateFormat, tempDue[0], tempDue[1], tempDue[2])}"
+//            else "Ongoing"
 
         holder.view.title.setText(tempTitle)
-        holder.view.dueView.setText(dueFormat)
+        holder.view.dueView.setText(dueText)
     }
 }
 
