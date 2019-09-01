@@ -8,6 +8,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.opengl.Visibility
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.isVisible
 
 import kotlinx.android.synthetic.main.activity_create_task.*
@@ -24,6 +25,12 @@ class createTask : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_task)
         setSupportActionBar(createTask_toolbar)
+
+        createTask_toolbar.setNavigationOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show()
+        }
 
         extraValue = intent.getIntExtra("edit", -1)
         if (extraValue != -1) editConfig(listStor[extraValue])
@@ -60,14 +67,14 @@ class createTask : AppCompatActivity() {
                 dueWarn.show()
             }
 
-            // configure for edit task
+            // For edit task
             else if (edit) {
                 listStor[extraValue] = Task(title, desc, due)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
 
-            // normal configuration
+            // normal
             else {
                 listStor.add(Task(title, desc, due))
                 val intent = Intent(this, MainActivity::class.java)
@@ -140,5 +147,11 @@ class createTask : AppCompatActivity() {
             tempDateArr = date
             Date.setText(dateFormatLetters(dateFormat, tempDateArr[0], tempDateArr[1], tempDateArr[2]))
         }
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show()
     }
 }
