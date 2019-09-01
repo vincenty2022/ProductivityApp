@@ -30,27 +30,4 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-            app:title="@string/settings_notifications_header">
-
-        <SwitchPreferenceCompat
-                app:key="notif_onoff"
-                app:title="@string/settings_notifications_onoff"
-                app:summaryOn="@string/settings_on"
-                app:summaryOff="@string/settings_off"/>
-
-        <SwitchPreferenceCompat
-                app:key="attachment"
-                app:title="attachment_title"
-                app:summaryOn="Summary_On"
-                app:summaryOff="Summary_Off"
-                app:dependency="notif_onoff"/>
-
-        <Preference
-                app:key="toTestActivity"
-                app:title="test"
-                app:fragment="com.example.productivity.testFragment"/>
-
-    </PreferenceCategory>
-
 </androidx.preference.PreferenceScreen>
