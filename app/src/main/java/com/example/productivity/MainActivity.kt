@@ -48,41 +48,10 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().replace(R.id.fragment_container, homeFragment()).commit()
         }
-
-
-        // Notifications
-        createNotificationChannel(
-            this,
-            "startEndChannel",
-            "Daily Notifications",
-            "Start/End of Day Notifications",
-            2
-        )
-        createNotificationChannel(
-            this,
-            "checkIn",
-            "Check-Ins",
-            "Reminder Notifications. Frequency can be set in app settings",
-            1
-        )
-
-        // test notification
-        val testNotification = Notification(
-            this,
-            "startEndChannel",
-            R.drawable.test_notification_icon,
-            "RAR",
-            "Rar",
-            1
-        )
     }
 
     override fun onResume() {
         super.onResume()
         bottom_nav.selectedItemId = R.id.homeButton
-    }
-
-    override fun onBackPressed() {
-//        super.onBackPressed()
     }
 }
